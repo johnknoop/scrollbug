@@ -1,0 +1,201 @@
+@import '../node_modules/modern-normalize/modern-normalize.css';
+@import 'lib/mixins.scss';
+
+// Fallback fonts
+@font-face {
+	font-family: "Arial";
+	src: local('Arial');
+	size-adjust: 107%;
+}
+@font-face {
+	font-family: "Helvetica";
+	src: local('Helvetica');
+	size-adjust: 107%;
+}
+
+:root {
+	--content-max-width: 1190px;
+	--content-margin: 100px;
+	--smooth-corners: 13;
+}
+
+:target,
+i.target {
+	display: block;
+	position: relative;
+	top: -130px; 
+	visibility: hidden;
+}
+
+@media (max-width: 1620px) {
+	:root {
+		--content-margin: 60px;
+	}
+}
+
+@include mobile {
+	:root {
+		--content-margin: clamp(20px, 6vw, 40px);
+		--content-max-width: 850px;
+	}
+}
+
+* {
+	font-family: 'Mulish', sans-serif;
+	font-size: inherit;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	scroll-behavior: smooth;
+	font-size: 16px;
+}
+
+html {
+	scroll-behavior: smooth;
+	color: #232323;
+}
+
+body > #svelte {
+	width: 100%;
+	display: flex;
+    flex-direction: column;
+	transition: left .2s;
+	position: relative;
+	left: 0;
+
+	@include mobile {
+		&.hamurger-menu-open {
+			left: -200px;
+		}
+	}
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Lexend', Arial, Helvetica, sans-serif;
+	color: #243541;
+}
+
+h1 {
+	font-size: 44px;
+}
+
+h2 {
+	font-size: 32px;
+	line-height: 42px;
+	padding: 0 0 13px;
+	margin: 0;
+
+	@include mobile {
+		font-size: 26px;
+		line-height: 35px;
+	}
+}
+
+h3 {
+	font-size: 22px;
+	line-height: 28px;
+	padding: 0 0 16px;
+	margin: 0;
+}
+
+h4 {
+	padding: 0 0 14px;
+	margin: 0;
+	line-height: 28px;
+}
+
+p, ul {
+	line-height: 28px;
+	padding: 14px 0;
+	margin: 0;
+	font-size: 16px;
+	max-height: 999999px; // Hack för Android så att texter inte förstoras
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+input,
+button,
+.button {
+	font-size: inherit;
+	font-family: inherit;
+	text-decoration: none;
+}
+
+button:focus:not(:focus-visible), .button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+.button {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 13px 24px;
+
+	white-space: nowrap;
+	
+	border: 2px solid rgba(0, 0, 0, 0.38);
+	border-radius: 4px;
+
+	background-color: transparent;
+	
+	font-weight: 600;
+	transition: background-color .05s;
+
+	gap: 10px; // Space mellan eventuell ikon och text
+
+	> :last-child {
+		// Ikon närmare vänsterkanten
+		margin-left: -5px;
+	}
+	
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+
+	&:hover:not(:disabled) {
+		background-color: #00000010;
+		text-decoration: none;
+	}
+
+	&.contrast {
+		background-color: #2BC9A2;
+		color: white;
+		border-color: transparent;
+
+		&:hover:not(:disabled) {
+			background-color: #23a383;
+		}
+	}
+
+	&.has-loader {
+		> svg {
+			display: none;
+		}
+
+		&.loading {
+			> svg {
+				display: block;
+			}
+
+			> span {
+				display: none;
+			}
+		}
+	}
+}
+
+hr {
+	border: none;
+	outline: none;
+	height: 2px;
+	background-color: #EAF0F0;
+}

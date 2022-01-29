@@ -1,0 +1,57 @@
+form {
+	> section {
+		margin: 28px 0;
+	}
+
+	label {
+		display: inline-flex;
+		flex-direction: column;
+		vertical-align: bottom;
+		margin-right: 16px;
+
+		&:first-child {
+			padding-top: 14px;
+		}
+
+		&:last-child {
+			padding-bottom: 22px;
+		}
+
+		> span {
+			font-weight: 800;
+			line-height: 28px;
+			text-transform: uppercase;
+			font-size: 14px;
+			color: #243541;
+			margin-top: 1px; // Placera på baseline grid
+		}
+
+		> input {
+			background: none;
+			border: none;
+			padding: 12px 0px 6px;
+			border-bottom: 1px solid #d8d8d8;
+			outline: none;
+			letter-spacing: .01em;
+			border-radius: 0;
+			align-self: start;
+			line-height: 28px;
+
+			&:first-child {
+				margin-top: 9px;
+			}
+
+			&:focus {
+				border-bottom-color: #abd9f8;
+			}
+		}
+	}
+
+	&.submitted input:invalid {
+		border-bottom-color: #f29f9f;
+
+		&:not(:focus)::placeholder {
+			color: #e76c6c;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+@mixin mobile() {
+	@media (max-width: 900px) and (-webkit-min-device-pixel-ratio: 1.5),
+		(max-width: 1200px) and (-webkit-max-device-pixel-ratio: 1.5) {
+		@content;
+	}
+}
+
+@mixin nonmobile() {
+	@media (min-width: 901px) and (-webkit-min-device-pixel-ratio: 1.5),
+		(min-width: 1201px) and (-webkit-max-device-pixel-ratio: 1.5) {
+		@content;
+	}
+}
+
+@mixin smooth-corners($factor: 13) {
+	--smooth-corners: #{$factor};
+	
+	mask-image: paint(smooth-corners);
+	-webkit-mask-image: paint(smooth-corners);
+}
